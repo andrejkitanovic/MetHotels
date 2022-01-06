@@ -47,4 +47,50 @@ export class AppComponent {
       this.hotelRooms[j] = temp;
     }
   }
+
+  public deleteRoom(room: HotelRoom) {
+    this.hotelRooms = this.hotelRooms.filter((item) => {
+      return item.number !== room.number;
+    });
+
+    const form = document.querySelector('.form.update-room');
+    form && form.classList.remove('active');
+  }
+
+  public setUpdateFormValues(room: HotelRoom) {
+    const form = document.querySelector('.form.update-room');
+    const roomNumber = document.getElementById('room-number');
+
+    (<HTMLInputElement>(
+      document.getElementById('numberToChange')
+    )).value = room.number.toString();
+    (<HTMLInputElement>(
+      document.getElementById('update-size')
+    )).value = room.size.toString();
+    (<HTMLInputElement>(
+      document.getElementById('update-price')
+    )).value = room.price.toString();
+
+    if (roomNumber) {
+      roomNumber.textContent = ` #${room.number}`;
+    }
+
+    form && form.classList.add('active');
+  }
+
+  public updateRoomHandler(
+    number: HTMLInputElement,
+    size: HTMLInputElement,
+    price: HTMLInputElement
+  ) {
+    const form = document.querySelector('.form.update-room');
+    const num = parseInt(number.value);
+
+    const foundRoomIndex = this.hotelRooms.findIndex((el) => el.number === num);
+
+    this.hotelRooms[foundRoomIndex].price = parseFloat(price.value);
+    this.hotelRooms[foundRoomIndex].size = parseFloat(size.value);
+
+    form && form.classList.remove('active');
+  }
 }

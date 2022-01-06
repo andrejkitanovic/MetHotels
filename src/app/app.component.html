@@ -43,6 +43,7 @@
       />
     </div>
     <div class="rooms__list-head">
+      <div class="rooms__list-head__title">Options</div>
       <div class="rooms__list-head__title">Number</div>
       <div class="rooms__list-head__title">Size</div>
       <div class="rooms__list-head__title">Price</div>
@@ -50,8 +51,39 @@
     <app-hotel-room
       *ngFor="let hotelRoom of hotelRooms | filterPipe: searchText; index as i"
       [hotelRoom]="hotelRoom"
+      (roomToDelete)="deleteRoom($event)"
+      (updateRoom)="setUpdateFormValues($event)"
     >
     </app-hotel-room>
   </div>
   <button (click)="randomizeRooms()" class="randomize">Randomize</button>
+
+  <div class="form update-room">
+    <h3 class="ui header">Update Room: <span id="room-number"></span></h3>
+    <input type="hidden" id="numberToChange" #updateNumber />
+    <div class="field">
+      <label class="rooms__list-head__title">Size (m2)</label>
+      <input
+        name="size"
+        type="number"
+        placeholder="Room size"
+        id="update-size"
+        #updateSize
+      />
+    </div>
+
+    <div class="field">
+      <label class="rooms__list-head__title">Price ($)</label>
+      <input
+        name="price"
+        type="number"
+        placeholder="Room price"
+        id="update-price"
+        #updatePrice
+      />
+    </div>
+    <button (click)="updateRoomHandler(updateNumber, updateSize, updatePrice)">
+      Update
+    </button>
+  </div>
 </div>

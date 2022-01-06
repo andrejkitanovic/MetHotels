@@ -1,4 +1,4 @@
-import { Component, Inject, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Inject, Input, OnInit, Output } from '@angular/core';
 import { HotelRoom } from './hotel-room.model';
 
 @Component({
@@ -7,9 +7,22 @@ import { HotelRoom } from './hotel-room.model';
   styleUrls: ['./hotel-room.component.scss'],
 })
 export class HotelRoomComponent implements OnInit {
+  @Output() roomToDelete: EventEmitter<HotelRoom>;
+  @Output() updateRoom: EventEmitter<HotelRoom>;
   @Input() hotelRoom: HotelRoom;
 
-  constructor() {}
+  constructor() {
+    this.roomToDelete = new EventEmitter();
+    this.updateRoom = new EventEmitter();
+  }
 
   ngOnInit(): void {}
+
+  public deleteRoomHandler(): void {
+    this.roomToDelete.emit(this.hotelRoom);
+  }
+
+  public updateRoomHandler(): void {
+    this.updateRoom.emit(this.hotelRoom);
+  }
 }
