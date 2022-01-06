@@ -1,37 +1,7 @@
 <div class="container">
   <h1>MetHotels - 3937</h1>
 
-  <div class="form">
-    <h3 class="ui header">Register New Room</h3>
-    <div class="field">
-      <input
-        name="number"
-        type="number"
-        placeholder="Room number"
-        id="number"
-        #newNumber
-      />
-    </div>
-    <div class="field">
-      <input
-        name="size"
-        type="number"
-        placeholder="Room size"
-        id="size"
-        #newSize
-      />
-    </div>
-    <div class="field">
-      <input
-        name="price"
-        type="number"
-        placeholder="Room price"
-        id="price"
-        #newPrice
-      />
-    </div>
-    <button (click)="addRoom(newNumber, newSize, newPrice)">Submit</button>
-  </div>
+  <app-add-room-form (roomToAdd)="addRoom($event)"></app-add-room-form>
 
   <div class="rooms">
     <div class="rooms__search">

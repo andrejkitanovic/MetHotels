@@ -26,13 +26,12 @@
 }
 
 .form {
-  margin: 50px 0;
-
   &.update-room {
     text-align: center;
     display: none;
 
-    input, label{
+    input,
+    label {
       display: block;
       margin-left: auto;
       margin-right: auto;

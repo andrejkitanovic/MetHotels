@@ -21,22 +21,12 @@ export class AppComponent {
     ];
   }
 
-  addRoom(
-    number: HTMLInputElement,
-    size: HTMLInputElement,
-    price: HTMLInputElement
-  ): void {
-    const newRoom = new HotelRoom(
-      parseInt(number.value),
-      parseFloat(size.value),
-      parseFloat(price.value)
-    );
+  public getRooms() {
+    return this.hotelRooms;
+  }
 
-    number.value = '';
-    size.value = '';
-    price.value = '';
-
-    this.hotelRooms.push(newRoom);
+  addRoom(room: HotelRoom): void {
+    this.hotelRooms.unshift(new HotelRoom(room.number, room.size, room.price));
   }
 
   randomizeRooms(): void {
@@ -90,7 +80,6 @@ export class AppComponent {
 
     this.hotelRooms[foundRoomIndex].price = parseFloat(price.value);
     this.hotelRooms[foundRoomIndex].size = parseFloat(size.value);
-
     form && form.classList.remove('active');
   }
 }

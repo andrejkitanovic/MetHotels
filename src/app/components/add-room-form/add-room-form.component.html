@@ -1,0 +1,57 @@
+<form class="form" [formGroup]="roomForm" (ngSubmit)="submitForm()">
+  <h3>Add new room</h3>
+  <div class="field">
+    <input
+      formControlName="number"
+      name="number"
+      type="number"
+      placeholder="Room number"
+      id="number"
+    />
+  </div>
+  <div
+    class="error-msg"
+    *ngIf="
+      roomForm.controls['number']['errors'] &&
+      roomForm.controls['number']['errors']['invalidNumber']
+    "
+  >
+    Number of room must be unique.
+  </div>
+  <div
+    class="error-msg"
+    *ngIf="
+      roomForm.controls['number']['errors'] &&
+      roomForm.controls['number']['errors']['required']
+    "
+  >
+    Number is required.
+  </div>
+  <div>
+    <input
+      formControlName="size"
+      name="size"
+      type="number"
+      placeholder="Room size"
+      id="size"
+    />
+  </div>
+  <div class="error-msg" *ngIf="roomForm.controls['size']['errors']">
+    Minimum size is 20
+  </div>
+  <div>
+    <input
+      formControlName="price"
+      name="price"
+      type="number"
+      placeholder="Room price"
+      id="price"
+    />
+  </div>
+  <div class="error-msg" *ngIf="roomForm.controls['price']['errors']">
+    Price is required.
+  </div>
+  <button type="submit" class="submit-btn" [disabled]="!roomForm.valid">
+    Submit
+  </button>
+</form>
