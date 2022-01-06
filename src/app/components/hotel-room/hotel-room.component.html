@@ -4,7 +4,24 @@
   <div class="hotel-room__single price">{{ hotelRoom.price }}$</div>
 
   <div class="hotel-room__single options">
+    <button (click)="openCalculatorHandler()">Calculate</button>
     <button (click)="updateRoomHandler()">Edit</button>
     <button (click)="deleteRoomHandler()">Delete</button>
   </div>
+</div>
+<div class="price-calculator calc-{{ hotelRoom.number }}">
+  <label>Calculate total price: </label>
+  <input
+    type="number"
+    id="numberOfNights"
+    name="numberOfNights"
+    placeholder="Number of Nights"
+    #numberOfNights
+  />
+  <div class="flex">
+    <button type="submit" (click)="getPrice(numberOfNights)">Submit</button>
+    <button (click)="closeCalculatorHandler()">Close</button>
+  </div>
+
+  <p>Price is: <span class="calculated-price"></span></p>
 </div>

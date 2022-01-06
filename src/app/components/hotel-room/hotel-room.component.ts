@@ -1,4 +1,12 @@
-import { Component, EventEmitter, Inject, Input, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Inject,
+  Input,
+  OnInit,
+  Output,
+} from '@angular/core';
+import { RoomService } from 'src/app/services/room.service';
 import { HotelRoom } from './hotel-room.model';
 
 @Component({
@@ -11,7 +19,7 @@ export class HotelRoomComponent implements OnInit {
   @Output() updateRoom: EventEmitter<HotelRoom>;
   @Input() hotelRoom: HotelRoom;
 
-  constructor() {
+  constructor(private _roomService: RoomService) {
     this.roomToDelete = new EventEmitter();
     this.updateRoom = new EventEmitter();
   }
@@ -24,5 +32,38 @@ export class HotelRoomComponent implements OnInit {
 
   public updateRoomHandler(): void {
     this.updateRoom.emit(this.hotelRoom);
+  }
+
+  public getPrice(numberOfNights: HTMLInputElement) {
+    if (numberOfNights.value === '') {
+      return;
+    }
+
+    const priceTotal = this._roomService.getPrice(
+      Number(numberOfNights.value),
+      this.hotelRoom
+    );
+
+    const priceHtml = document.querySelector(
+      `.price-calculator.calc-${this.hotelRoom.number} .calculated-price`
+    );
+
+    if (priceHtml) {
+      priceHtml.textContent = `${priceTotal}$`;
+    }
+  }
+
+  public openCalculatorHandler() {
+    const calculator = document.querySelector(
+      `.price-calculator.calc-${this.hotelRoom.number}`
+    );
+    calculator?.classList.add('active');
+  }
+
+  public closeCalculatorHandler() {
+    const calculator = document.querySelector(
+      `.price-calculator.calc-${this.hotelRoom.number}`
+    );
+    calculator?.classList.remove('active');
   }
 }

@@ -13,10 +13,10 @@
       />
     </div>
     <div class="rooms__list-head">
-      <div class="rooms__list-head__title">Options</div>
       <div class="rooms__list-head__title">Number</div>
       <div class="rooms__list-head__title">Size</div>
-      <div class="rooms__list-head__title">Price</div>
+      <div class="rooms__list-head__title">Price Per Night</div>
+      <div class="rooms__list-head__title">Options</div>
     </div>
     <app-hotel-room
       *ngFor="let hotelRoom of hotelRooms | filterPipe: searchText; index as i"
