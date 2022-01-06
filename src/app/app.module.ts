@@ -10,7 +10,12 @@ import { AddRoomFormComponent } from './components/add-room-form/add-room-form.c
 import { RoomService } from './services/room.service';
 
 @NgModule({
-  declarations: [AppComponent, HotelRoomComponent, FilterPipePipe, AddRoomFormComponent],
+  declarations: [
+    AppComponent,
+    HotelRoomComponent,
+    FilterPipePipe,
+    AddRoomFormComponent,
+  ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [RoomService],
   bootstrap: [AppComponent],

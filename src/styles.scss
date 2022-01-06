@@ -18,6 +18,10 @@ h6 {
   text-align: center;
 }
 
+p {
+  font-size: 18px;
+}
+
 input {
   display: block;
   margin: 0 auto;
@@ -36,4 +40,8 @@ button {
   font-weight: 700;
   font-size: 16px;
   cursor: pointer;
+
+  &:hover {
+    background-color: #3939a2;
+  }
 }

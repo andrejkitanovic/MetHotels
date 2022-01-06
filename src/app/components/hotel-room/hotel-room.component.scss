@@ -8,10 +8,13 @@
     width: 25%;
     font-size: 20px;
     border-left: 1px solid #000;
-
     margin: 15px 0;
     padding: 6px 0;
     padding-left: 20px;
+
+    button {
+      margin: 0 5px;
+    }
 
     &.options {
       display: flex;
@@ -25,16 +28,16 @@
   margin-bottom: 15px;
   border-bottom: 1px solid #000;
 
-  .flex{
+  .flex {
     display: flex;
     max-width: 280px;
-    margin:0 auto;
+    margin: 0 auto;
   }
 
-  label{
+  label {
     display: block;
     text-align: center;
-    font-weight:bold;
+    font-weight: bold;
     margin-bottom: 10px;
   }
 

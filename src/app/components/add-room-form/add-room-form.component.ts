@@ -1,6 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import {
-  AbstractControl,
   FormGroup,
   FormControl,
   Validators,
@@ -16,8 +15,6 @@ import { HotelRoom } from '../hotel-room/hotel-room.model';
 export class AddRoomFormComponent implements OnInit {
   public roomForm: FormGroup;
   @Output() roomToAdd: EventEmitter<HotelRoom>;
-
-  number: AbstractControl;
 
   constructor() {
     this.roomToAdd = new EventEmitter();
