@@ -1,11 +1,10 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import {
-  FormGroup,
-  FormControl,
-  Validators,
-} from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Store } from '@ngrx/store';
 import { AppComponent } from 'src/app/app.component';
 import { HotelRoom } from '../hotel-room/hotel-room.model';
+import { Observable } from 'rxjs';
+import { increment } from 'src/app/store/counter.actions';
 
 @Component({
   selector: 'app-add-room-form',
@@ -15,9 +14,11 @@ import { HotelRoom } from '../hotel-room/hotel-room.model';
 export class AddRoomFormComponent implements OnInit {
   public roomForm: FormGroup;
   @Output() roomToAdd: EventEmitter<HotelRoom>;
+  count$: Observable<number>;
 
-  constructor() {
+  constructor(private store: Store<{ count: number }>) {
     this.roomToAdd = new EventEmitter();
+    this.count$ = store.select('count');
   }
 
   ngOnInit(): void {
@@ -60,5 +61,7 @@ export class AddRoomFormComponent implements OnInit {
 
     let room = new HotelRoom(number, size, price);
     this.roomToAdd.emit(room);
+
+    this.store.dispatch(increment());
   }
 }

@@ -9,6 +9,9 @@ import { FilterPipePipe } from './helpers/filter-pipe.pipe';
 import { AddRoomFormComponent } from './components/add-room-form/add-room-form.component';
 import { RoomService } from './services/room.service';
 
+import { StoreModule } from '@ngrx/store';
+import { counterReducer } from './store/counter.reducer';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,7 +19,7 @@ import { RoomService } from './services/room.service';
     FilterPipePipe,
     AddRoomFormComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, StoreModule.forRoot({ count: counterReducer })],
   providers: [RoomService],
   bootstrap: [AppComponent],
 })

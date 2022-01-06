@@ -42,9 +42,6 @@ export class AppComponent {
     this.hotelRooms = this.hotelRooms.filter((item) => {
       return item.number !== room.number;
     });
-
-    const form = document.querySelector('.form.update-room');
-    form && form.classList.remove('active');
   }
 
   public setUpdateFormValues(room: HotelRoom) {
