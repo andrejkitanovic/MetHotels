@@ -1,0 +1,40 @@
+.rooms {
+  &__list-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+
+    &__title {
+      font-size: 18px;
+      font-weight: bold;
+      width: 33%;
+      margin-left: 5px;
+      border-bottom: 1px solid #000;
+      margin-bottom: 15px;
+    }
+  }
+
+  &__search {
+    text-align: center;
+    input {
+      width: 40%;
+      margin-bottom: 40px;
+    }
+  }
+}
+
+.shuffle-btn {
+  margin-top: 20px;
+  border: none;
+  width: 150px;
+  height: 45px;
+  margin: 20px auto;
+  display: block;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.form {
+  margin: 50px 0;
+}
