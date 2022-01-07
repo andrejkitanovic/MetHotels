@@ -1,4 +1,14 @@
-import { Component } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  OnDestroy,
+  DoCheck,
+  OnChanges,
+  AfterContentInit,
+  AfterContentChecked,
+  AfterViewInit,
+  AfterViewChecked,
+} from '@angular/core';
 import { HotelRoom } from './components/hotel-room/hotel-room.model';
 
 @Component({
@@ -6,7 +16,16 @@ import { HotelRoom } from './components/hotel-room/hotel-room.model';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
+export class AppComponent
+  implements
+    OnInit,
+    OnDestroy,
+    DoCheck,
+    OnChanges,
+    AfterContentInit,
+    AfterContentChecked,
+    AfterViewInit,
+    AfterViewChecked {
   title = 'MetHotels';
   hotelRooms: HotelRoom[];
   searchText = '';
@@ -19,6 +38,38 @@ export class AppComponent {
       new HotelRoom(201, 162, 2100),
       new HotelRoom(202, 29, 320),
     ];
+  }
+
+  ngOnInit() {
+    console.log('[APP] On Init');
+  }
+
+  ngOnDestroy() {
+    console.log('[APP] On Destroy');
+  }
+
+  ngOnChanges() {
+    console.log('[APP] On Changes');
+  }
+
+  ngDoCheck() {
+    console.log('[APP] Do Check');
+  }
+
+  ngAfterViewInit() {
+    console.log('[APP] After View Init');
+  }
+
+  ngAfterViewChecked() {
+    console.log('[APP] After View Checked');
+  }
+
+  ngAfterContentInit() {
+    console.log('[APP] After Content Init');
+  }
+
+  ngAfterContentChecked() {
+    console.log('[APP] After Content Checked');
   }
 
   public getRooms() {

@@ -11,6 +11,7 @@ import { RoomService } from './services/room.service';
 
 import { StoreModule } from '@ngrx/store';
 import { counterReducer } from './store/counter.reducer';
+import { ChangeColorDirective } from './directives/change-color.directive';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { counterReducer } from './store/counter.reducer';
     HotelRoomComponent,
     FilterPipePipe,
     AddRoomFormComponent,
+    ChangeColorDirective
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule, StoreModule.forRoot({ count: counterReducer })],
   providers: [RoomService],
